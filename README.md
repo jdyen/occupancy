@@ -8,8 +8,10 @@ You can install the current version of the package (0.0.1) from GitHub:
 devtools::install_github("jdyen/occupancy")
 ```
 
+
 ### System requirements
 The `occupancy' package uses the JAGS software to fit all models. JAGS will need to be downloaded and installed separately. You can find details about JAGS installation [here](http://mcmc-jags.sourceforge.net/).
+
 
 ### Example analysis
 The package includes some simulated data, and you can fit an occupancy-detection model to these data with the following code:
