@@ -35,7 +35,7 @@ plot_pr_detect(object, npred = 1000, var_name = NULL, label = NULL,
   scale = NULL, ...)
 }
 \arguments{
-\item{object}{a model fitted with \link[occupancy:occupancy][occupancy]}
+\item{object}{a model fitted with \link[occupancy:occupancy]{occupancy}}
 
 \item{newdata}{for \code{predict}, a \code{list} object with named elements corresponding
 to all included data types, any or all of: X_occ (fixed occupancy predictors),
@@ -50,7 +50,7 @@ the original (response) scale.}
 
 \item{\dots}{additional arguments passed to the default methods}
 
-\item{x}{a model fitted with \link[occupancy:occupancy][occupancy]}
+\item{x}{a model fitted with \link[occupancy:occupancy]{occupancy}}
 
 \item{names_occ}{optional, the names of occupancy predictors to be used in plots}
 

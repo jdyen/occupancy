@@ -44,7 +44,7 @@
 #'  
 #' }
 #' 
-#' @param object a model fitted with \link[occupancy:occupancy][occupancy]
+#' @param object a model fitted with \link[occupancy:occupancy]{occupancy}
 #' @param newdata for \code{predict}, a \code{list} object with named elements corresponding
 #'     to all included data types, any or all of: X_occ (fixed occupancy predictors),
 #'     X_detect (fixed detection predictors), Z_occ (random occupancy predictors),
@@ -55,7 +55,7 @@
 #'     original ("response") scale. For \code{spatial_predict}, all predictions are generated on
 #'     the original (response) scale.
 #' @param \dots additional arguments passed to the default methods
-#' @param x a model fitted with \link[occupancy:occupancy][occupancy]
+#' @param x a model fitted with \link[occupancy:occupancy]{occupancy}
 #' @param names_occ optional, the names of occupancy predictors to be used in plots
 #' @param names_detect optional, the names of detection predictors to be used in plots
 #' @param intercept logical, should the intercept be included on plots?
