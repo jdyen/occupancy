@@ -1,4 +1,4 @@
-### occupancy: an R package for fitting occupancy-detection models with JAGS.
+### occupancy: an R package for fitting occupancy-detection models with JAGS
 
 `occupancy` lets you write your model with a standard R mixed-model formula, and provides several methods for summarising, visualising, validating, and predicting from fitted models.
 
@@ -12,6 +12,7 @@ devtools::install_github("jdyen/occupancy")
 ### System requirements
 
 The `occupancy' package uses the JAGS software to fit all models. JAGS will need to be downloaded and installed separately. You can find details about JAGS installation [here](http://mcmc-jags.sourceforge.net/).
+
 ----
 
 ### Example analysis
