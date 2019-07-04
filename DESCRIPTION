@@ -29,7 +29,8 @@ Collate:
     'validate.R'
     'utils.R'
 Imports:
-    jagsUI
+    jagsUI,
+    pROC
 Suggests:
     raster,
     coda,
