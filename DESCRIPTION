@@ -24,6 +24,7 @@ Collate:
     'jags_models.R'
     'methods.R'
     'occupancy.R'
+    'occupancy_data.R'
     'package.R'
     'validate.R'
     'utils.R'
