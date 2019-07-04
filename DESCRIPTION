@@ -25,7 +25,6 @@ Collate:
     'methods.R'
     'occupancy.R'
     'package.R'
-    'plot_methods.R'
     'validate.R'
     'utils.R'
 Imports:

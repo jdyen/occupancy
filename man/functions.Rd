@@ -36,6 +36,12 @@ This is a list of functions (mostly from base R) that are
  # calculate a suite of validation metrics (r2, AUC, DIC)
  calculate_metrics(object, ...)
  
+ plot(x, type, names_occ, names_detect, intercept, ...)
+ 
+ plot_pr_occ(object, npred, var_name, label, ...)
+ 
+ plot_pr_detect(object, npred, var_name, label, scale, ...)
+ 
 }
 }
 
