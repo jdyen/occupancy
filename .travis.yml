@@ -1,0 +1,23 @@
+sudo: required
+language: r
+warnings_are_errors: false
+dist: trusty
+
+r_binary_packages:
+  - jagsUI
+  - coda
+
+r_packages:
+  - raster
+  - testthat
+  - covr
+
+cache:
+  packages: true
+
+after_success:
+  - Rscript -e "covr::codecov()"
+
+email:
+  on_success: change
+  on_failure: change
