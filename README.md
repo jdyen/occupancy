@@ -10,6 +10,7 @@ devtools::install_github("jdyen/occupancy")
 ----
 
 ### System requirements
+
 The `occupancy' package uses the JAGS software to fit all models. JAGS will need to be downloaded and installed separately. You can find details about JAGS installation [here](http://mcmc-jags.sourceforge.net/).
 ----
 
