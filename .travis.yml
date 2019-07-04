@@ -12,6 +12,7 @@ r_packages:
   - testthat
   - covr
   - knitr
+  - pROC
 
 cache:
   packages: true

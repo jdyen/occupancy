@@ -33,6 +33,7 @@ Imports:
 Suggests:
     raster,
     coda,
-    testthat
+    testthat,
+    knitr
 VignetteBuilder: knitr
 RoxygenNote: 6.1.0
