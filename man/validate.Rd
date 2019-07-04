@@ -3,6 +3,9 @@
 \name{validate}
 \alias{validate}
 \title{perform cross validation on a fitted occupancy-detection model}
+\usage{
+validate(object, n_cv = 10)
+}
 \arguments{
 \item{object}{occupancy model fitted with \link[occupancy:occupancy]{occupancy::occupancy}.}
 
@@ -42,4 +45,5 @@ mod <- occupancy(response ~ occ_predictor1 + occ_predictor2 +
 validate(mod)
      
 }
+
 }

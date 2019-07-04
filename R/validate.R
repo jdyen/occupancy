@@ -39,8 +39,7 @@
 #' validate(mod)
 #'      
 #' }
-NULL
-
+#' 
 #' @export
 validate <- function(object, n_cv = 10) {
   

@@ -44,18 +44,27 @@
 #'  
 #' }
 #' 
-#' @param object to add
-#' @param newdata to add
-#' @param type to add
-#' @param \dots to add
-#' @param x to add
-#' @param names_occ to add
-#' @param names_detect to add
-#' @param intercept to add
-#' @param npred to add
-#' @param var_name to add
-#' @param label to add
-#' @param scale to add
+#' @param object a model fitted with \link[occupancy:occupancy][occupancy]
+#' @param newdata for \code{predict}, a \code{list} object with named elements corresponding
+#'     to all included data types, any or all of: X_occ (fixed occupancy predictors),
+#'     X_detect (fixed detection predictors), Z_occ (random occupancy predictors),
+#'     and Z_detect (random detection predictors). For \code{spatial_predict}, a raster
+#'     stack with one raster for each predictor included in the occupancy model. The
+#'     intercept is added to this raster stack within the \code{spatial_predict} function.
+#' @param type character denoting whether predictions are generated on the link ("link") or
+#'     original ("response") scale. For \code{spatial_predict}, all predictions are generated on
+#'     the original (response) scale.
+#' @param \dots additional arguments passed to the default methods
+#' @param x a model fitted with \link[occupancy:occupancy][occupancy]
+#' @param names_occ optional, the names of occupancy predictors to be used in plots
+#' @param names_detect optional, the names of detection predictors to be used in plots
+#' @param intercept logical, should the intercept be included on plots?
+#' @param npred number of points at which to evaluate predictions
+#' @param var_name \code{character} defining the variable to be plotted (defaults to the
+#'     first variable named in the model formula)
+#' @param label optional, x-axis label for plots
+#' @param scale optional, mean and standard deviation to plot values against unscaled
+#'     predictor variables
 #'
 #' @details \code{predict} generates predictions of occupancy probabilities, detection
 #'     probabilities, and likely detections (sampled as binary detection/nondetection)
@@ -84,11 +93,11 @@
 #' # check model fit
 #' calculate_metrics(mod)
 #' 
-#' # spatial predictions
+#' # plot probability of occupancy as one variable is changed
+#' plot_pr_occ(mod, npred = 1000, var_name = "occ_predictor1")
 #' 
-#' # plot_pr_occ example
-#' 
-#' # plot_pr_detect
+#' # plot probability of detection as one variable is changed
+#' plot_pr_detect(mod, npred = 1000, var_name = "detect_predictor2")
 #' 
 #' }
 NULL

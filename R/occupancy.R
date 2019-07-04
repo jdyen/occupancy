@@ -30,16 +30,18 @@
 #'     (see \code{site_id} and \code{survey_id}, above), and predictor variables. Column names
 #'     must match the names used in \code{formula_occ} and \code{formula_detect}.
 #'     
-#' @param jags_settings optional list of MCMC settings. Options are: 
-#'     - the total number of MCMC iterations (including burn-in): \code{n_iter}
-#'     - the number of MCMC iterations to discard as a burn-in: \code{n_burnin}
-#'     - the number of MCMC chains: \code{n_chains}
-#'     - thinning rate of MCMC samples: \code{n_thin}
-#'     - logical, should chains be run in parallel?: \code{parallel}
-#'     - JAGS modules to load: \code{modules}
-#'     - character vector of parameters to store: \code{params}
-#'     - seed used to initialise MCMC chains: \code{seed}
-#'     Any or all of these can be altered if needed.
+#' @param jags_settings optional list of MCMC settings. Any or all items can be altered
+#'     if needed. Options are:
+#'     \describe{
+#'       \item{\code{n_iter}}{the total number of MCMC iterations (including burn-in)}
+#'       \item{\code{n_burnin}}{the number of MCMC iterations to discard as a burn-in}
+#'       \item{\code{n_chains}}{the number of MCMC chains}
+#'       \item{\code{n_thin}}{thinning rate of MCMC samples}
+#'       \item{\code{parallel}}{logical, should chains be run in parallel?}
+#'       \item{\code{modules}}{JAGS modules to load}
+#'       \item{\code{params}}{character vector of parameters to store}
+#'       \item{\code{seed}}{seed used to initialise MCMC chains}
+#'     }
 #'
 #' @details This function fits an occupancy-detection model in JAGS from two formulas:
 #'     \code{formula_occ} and \code{formula_detect}. Occupancy-detection models separate
@@ -52,7 +54,7 @@
 #'     occupancy/detection and predictor variables are linear on a logit scale.
 #'
 #' @return \code{occupancy_model} - a \code{list} object that can be analysed using
-#'   functions described in \link[occupancy:methods]{occupancy::methods}.
+#'   functions described in \link[occupancy:methods]{methods}.
 #'   
 #' @examples
 #' \dontrun{
@@ -78,8 +80,7 @@
 #' calculate_metrics(mod)
 #'      
 #' }
-NULL
-
+#' 
 #' @export
 occupancy <- function(formula_occ, formula_detect, site_id, survey_id, data, jags_settings = list()) {
   

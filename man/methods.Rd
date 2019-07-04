@@ -35,29 +35,38 @@ plot_pr_detect(object, npred = 1000, var_name = NULL, label = NULL,
   scale = NULL, ...)
 }
 \arguments{
-\item{object}{to add}
+\item{object}{a model fitted with \link[occupancy:occupancy][occupancy]}
 
-\item{newdata}{to add}
+\item{newdata}{for \code{predict}, a \code{list} object with named elements corresponding
+to all included data types, any or all of: X_occ (fixed occupancy predictors),
+X_detect (fixed detection predictors), Z_occ (random occupancy predictors),
+and Z_detect (random detection predictors). For \code{spatial_predict}, a raster
+stack with one raster for each predictor included in the occupancy model. The
+intercept is added to this raster stack within the \code{spatial_predict} function.}
 
-\item{type}{to add}
+\item{type}{character denoting whether predictions are generated on the link ("link") or
+original ("response") scale. For \code{spatial_predict}, all predictions are generated on
+the original (response) scale.}
 
-\item{\dots}{to add}
+\item{\dots}{additional arguments passed to the default methods}
 
-\item{x}{to add}
+\item{x}{a model fitted with \link[occupancy:occupancy][occupancy]}
 
-\item{names_occ}{to add}
+\item{names_occ}{optional, the names of occupancy predictors to be used in plots}
 
-\item{names_detect}{to add}
+\item{names_detect}{optional, the names of detection predictors to be used in plots}
 
-\item{intercept}{to add}
+\item{intercept}{logical, should the intercept be included on plots?}
 
-\item{npred}{to add}
+\item{npred}{number of points at which to evaluate predictions}
 
-\item{var_name}{to add}
+\item{var_name}{\code{character} defining the variable to be plotted (defaults to the
+first variable named in the model formula)}
 
-\item{label}{to add}
+\item{label}{optional, x-axis label for plots}
 
-\item{scale}{to add}
+\item{scale}{optional, mean and standard deviation to plot values against unscaled
+predictor variables}
 }
 \description{
 This is a list of functions (mostly from base R) that are
@@ -127,11 +136,11 @@ coef(mod)
 # check model fit
 calculate_metrics(mod)
 
-# spatial predictions
+# plot probability of occupancy as one variable is changed
+plot_pr_occ(mod, npred = 1000, var_name = "occ_predictor1")
 
-# plot_pr_occ example
-
-# plot_pr_detect
+# plot probability of detection as one variable is changed
+plot_pr_detect(mod, npred = 1000, var_name = "detect_predictor2")
 
 }
 }
