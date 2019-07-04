@@ -2,6 +2,11 @@
 #'
 #' @title methods for occupancy_models
 #'
+#' @importFrom graphics axis lines plot points
+#' @importFrom stats as.formula coef delete.response model.matrix plogis predict quantile rbinom runif sd
+#' @importFrom utils stack
+#' @importFrom ggplot2 alpha
+#'
 #' @description This is a list of functions (mostly from base R) that are
 #'   currently implemented for fitted occupancy models.
 #'
@@ -39,6 +44,18 @@
 #'  
 #' }
 #' 
+#' @param object
+#' @param newdata
+#' @param type
+#' @param \dots
+#' @param x
+#' @param names_occ
+#' @param names_detect
+#' @param intercept
+#' @param npred
+#' @param var_name
+#' @param label
+#' @param scale
 #'
 #' @details \code{predict} generates predictions of occupancy probabilities, detection
 #'     probabilities, and likely detections (sampled as binary detection/nondetection)
@@ -77,6 +94,8 @@
 NULL
 
 #' @export
+#' @rdname methods
+#' 
 predict.occupancy_model <- function(object, newdata = NULL, type = c("link", "response"), ...) {
   
   # check if link or response or neither (default to link)
@@ -123,6 +142,8 @@ predict.occupancy_model <- function(object, newdata = NULL, type = c("link", "re
 }
 
 #' @export
+#' @rdname methods
+#' 
 spatial_predict <- function(object, newdata = NULL, type = "response", ...) {
   
   # what if newdata aren't provided?
@@ -158,6 +179,8 @@ spatial_predict <- function(object, newdata = NULL, type = "response", ...) {
 }
 
 #' @export
+#' @rdname methods
+#' 
 summary.occupancy_model <- function(object, ...) {
   
   summary(object$jags_model$samples, ...)
@@ -179,6 +202,8 @@ fitted.occupancy_model <- function(object, type = c("link", "response"), ...) {
 }
 
 #' @export
+#' @rdname methods
+#' 
 coef.occupancy_model <- function(object, ...) {
   
   beta_psi <- lapply(object$jags_model$samples, function(y) y[, grep("beta_psi\\[", colnames(y))])
@@ -202,6 +227,8 @@ coef.occupancy_model <- function(object, ...) {
 }
 
 #' @export
+#' @rdname methods
+#' 
 calculate_metrics <- function(object, ...) {
   
   # pull out fitted and observed values (need to calculate log likelihoods)  
@@ -234,6 +261,8 @@ calculate_metrics <- function(object, ...) {
 }
 
 #' @export
+#' @rdname methods
+#' 
 r2_calc <- function(object, ...) {
   
   # pull out fitted and observed values (need to calculate log likelihoods)  
@@ -284,6 +313,8 @@ barplot_inner <- function(x, var_names, intercept, ...) {
 }
 
 #' @export
+#' @rdname methods
+#' 
 plot.occupancy_model <- function(x, type = "barplot", 
                                  names_occ = NULL, names_detect = NULL,
                                  intercept = FALSE,
@@ -308,6 +339,8 @@ plot.occupancy_model <- function(x, type = "barplot",
 }
 
 #' @export
+#' @rdname methods
+#' 
 plot_pr_occ <- function(object, npred = 1000, var_name = NULL, label = NULL, ...) {
   
   if (is.null(var_name)) {
@@ -339,6 +372,8 @@ plot_pr_occ <- function(object, npred = 1000, var_name = NULL, label = NULL, ...
 }
 
 #' @export
+#' @rdname methods
+#' 
 plot_pr_detect <- function(object, npred = 1000, var_name = NULL, label = NULL, scale = NULL, ...) {
   
   if (is.null(var_name)) {
