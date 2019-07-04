@@ -1,0 +1,9 @@
+^_pkgdown\.yml$
+^.github$
+^.travis.yml$
+^docs$
+^.*\.Rproj$
+^\.Rproj\.user$
+
+^LICENSE$
+^README\.md$
