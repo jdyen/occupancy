@@ -29,10 +29,12 @@ Collate:
     'validate.R'
     'utils.R'
 Imports:
+    graphics,
     jagsUI,
     pROC,
     raster,
-    scales
+    scales,
+    stats
 Suggests:
     coda,
     testthat,

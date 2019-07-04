@@ -4,7 +4,6 @@
 #'
 #' @importFrom graphics axis lines plot points
 #' @importFrom stats as.formula coef delete.response model.matrix plogis predict quantile rbinom runif sd
-#' @importFrom utils stack
 #' @importFrom scales alpha
 #' @importFrom raster nlayers stack calc setValues
 #'
