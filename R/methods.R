@@ -5,7 +5,7 @@
 #' @importFrom graphics axis lines plot points
 #' @importFrom stats as.formula coef delete.response model.matrix plogis predict quantile rbinom runif sd
 #' @importFrom utils stack
-#' @importFrom ggplot2 alpha
+#' @importFrom scales alpha
 #'
 #' @description This is a list of functions (mostly from base R) that are
 #'   currently implemented for fitted occupancy models.
@@ -367,7 +367,7 @@ plot_pr_occ <- function(object, npred = 1000, var_name = NULL, label = NULL, ...
        las = 1, type = "l", lwd = 2, col = "black",
        ylim= c(0, 1))
   points(c(object$data$y) ~ rep(object$data$X_occ[, var_idx], 2), pch = 16,
-         col = ggplot2::alpha("black", 0.5))
+         col = scales::alpha("black", 0.5))
   
 }
 

@@ -30,7 +30,8 @@ Collate:
     'utils.R'
 Imports:
     jagsUI,
-    pROC
+    pROC,
+    scales
 Suggests:
     raster,
     coda,
