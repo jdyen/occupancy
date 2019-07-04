@@ -67,24 +67,26 @@ This function fits an occupancy-detection model in JAGS from two formulas:
 \examples{
 \dontrun{
 
-# simulate some data
-n <- 10
-nx_occ <- 3
-nx_detect <- 2
-ngroup_occ <- 3
-ngroup_detect <- 4
-x_occ <- matrix(rnorm(n * nx_occ), ncol = nx_occ)
-z_occ <- sample(seq_len(ngroup_occ), size = n, replace = TRUE)
-x_detect <- matrix(rnorm(n * nx_detect), ncol = nx_detect)
-z_detect <- sample(seq_len(ngroup_detect), size = n, replace = TRUE)
-beta_occ <- rnorm(nx_occ)
-gamma_occ <- rnorm(ngroup_occ)
-beta_detect <- rnorm(nx_detect)
-gamma_detect <- rnorm(ngroup_detect)
-y
+# fit a model to simulated data
+mod <- occupancy(response ~ occ_predictor1 + occ_predictor2 + 
+                    (1 | occ_random1) + (1 | occ_random2),
+                  ~ detect_predictor1 + detect_predictor2 + 
+                   (1 | detect_random1),
+               site_id = "site",
+               survey_id = "survey",
+               data = occupancy_data,
+               jags_settings = list(n_iter = 1000, n_burnin = 500, n_thin = 2))
+               
+# plot the model coefficients
+par(mfrow = c(2, 1))
+plot(mod)
 
-# fit model
+# extract the model coefficients
+coef(mod)
 
+# check model fit
+calculate_metrics(mod)
+     
 }
 \dontrun{
 # a simple occupancy-detection model for artificial data

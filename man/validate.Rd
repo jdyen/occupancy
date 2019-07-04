@@ -28,7 +28,18 @@ Cross validation is a useful method to test model reliability on new data. Many
 \examples{
 \dontrun{
 
-NULL
-
+# fit a model to simulated data
+mod <- occupancy(response ~ occ_predictor1 + occ_predictor2 + 
+                    (1 | occ_random1) + (1 | occ_random2),
+                  ~ detect_predictor1 + detect_predictor2 + 
+                   (1 | detect_random1),
+               site_id = "site",
+               survey_id = "survey",
+               data = occupancy_data,
+               jags_settings = list(n_iter = 1000, n_burnin = 500, n_thin = 2))
+               
+# cross validate the fitted model
+validate(mod)
+     
 }
 }
