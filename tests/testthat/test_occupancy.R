@@ -133,7 +133,7 @@ test_that("models can predict to new spatial data", {
   spatial_layers <- list()
   for (i in seq_len(2))
     spatial_layers[[i]] <- raster(nrows = 1, ncols = 1, res = 0.5, xmn = -1.5, xmx = 1.5, ymn = -1.5, ymx = 1.5, vals = 0.3)
-  raster_stack <- stack(spatial_layers)
+  raster_stack <- raster::stack(spatial_layers)
   expect_ok(spatial_predict(mod_tmp, newdata = raster_stack))
 
   # errors if variable missing
