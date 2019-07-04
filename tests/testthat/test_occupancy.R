@@ -86,13 +86,30 @@ test_that("errors are informative when data are incorrectly formatted", {
   # site column missing
   
   # random effects misspecified
+
+  # warn when occupancy predictors are not unique at a site
+  occ_data_tmp <- occupancy_data
+  occ_data_tmp$occ_predictor1 <- rnorm(nrow(occ_data_tmp))
+  expect_warning(occupancy(response ~ occ_predictor1 + occ_predictor2 + (1 | occ_random1) + (1 | occ_random2),
+                           ~ detect_predictor1 + detect_predictor2 + (1 | detect_random1),
+                           site_id = "site", survey_id = "survey",
+                           data = occ_data_tmp, jags_settings = list(n_iter = 50, n_burnin = 10)))
   
 })
 
-test_that("error message is helpful if JAGS is missing", {
+test_that("errors are informative when a formula is wrong", {
   
-  # add a utils.R function to check JAGS, print instructions to install with link
+  # can't have interactions in random effects
+  expect_error(occupancy(response ~ occ_predictor1 + occ_predictor2 + (1 | occ_random1 * occ_random2),
+                         ~ detect_predictor1 + detect_predictor2 + (1 | detect_random1),
+                         site_id = "site", survey_id = "survey",
+                         data = occupancy_data, jags_settings = list(n_iter = 50, n_burnin = 10)))
+  expect_error(occupancy(response ~ occ_predictor1 + occ_predictor2 + (1 | occ_random1),
+                         ~ detect_predictor1 + detect_predictor2 + (1 | detect_random1 * detect_random1),
+                         site_id = "site", survey_id = "survey",
+                         data = occupancy_data, jags_settings = list(n_iter = 50, n_burnin = 10)))
   
+
 })
 
 test_that("models can predict to fitted and new data", {
