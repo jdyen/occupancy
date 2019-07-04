@@ -2,8 +2,7 @@
 
 `occupancy` lets you write your model with a standard R mixed-model formula, and provides several methods for summarising, visualising, validating, and predicting from fitted models.
 
-You can install the current version of the package (0.0.1) from GitHub:
-
+You can install the current version of the package (0.0.1) from GitHub (you will need to install the devtools package if not already installed):
 ``` r
 devtools::install_github("jdyen/occupancy")
 ```

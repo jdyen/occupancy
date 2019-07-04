@@ -149,14 +149,7 @@ test_that("model validation works", {
                        site_id = "site", survey_id = "survey",
                        data = occupancy_data, jags_settings = list(n_iter = 50, n_burnin = 10))
   
-  # list of methods at this stage, add tests of dims and output types
-  expect_ok(coef(mod_tmp))
-  expect_ok(summary(mod_tmp))
-  expect_ok(fitted(mod_tmp))
-  expect_ok(r2_calc(mod_tmp))
-  expect_ok(calculate_metrics(mod_tmp))
-  expect_ok(plot(mod_tmp))
-  expect_ok(plot_pr_occ(mod_tmp))
-  expect_ok(plot_pr_detect(mod_tmp))
-  
+  # validate a model
+  expect_ok(validate(mod_tmp, n_cv = 3))
+
 })
