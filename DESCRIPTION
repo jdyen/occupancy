@@ -31,9 +31,9 @@ Collate:
 Imports:
     jagsUI,
     pROC,
+    raster,
     scales
 Suggests:
-    raster,
     coda,
     testthat,
     knitr

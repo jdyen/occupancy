@@ -35,7 +35,29 @@ plot_pr_detect(object, npred = 1000, var_name = NULL, label = NULL,
   scale = NULL, ...)
 }
 \arguments{
-\item{scale}{}
+\item{object}{to add}
+
+\item{newdata}{to add}
+
+\item{type}{to add}
+
+\item{\dots}{to add}
+
+\item{x}{to add}
+
+\item{names_occ}{to add}
+
+\item{names_detect}{to add}
+
+\item{intercept}{to add}
+
+\item{npred}{to add}
+
+\item{var_name}{to add}
+
+\item{label}{to add}
+
+\item{scale}{to add}
 }
 \description{
 This is a list of functions (mostly from base R) that are

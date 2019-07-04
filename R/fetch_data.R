@@ -177,7 +177,7 @@ check_dims <- function(y, X_occ, X_detect, Z_occ, Z_detect) {
   if (!is.null(X_occ)) {
     if (nrow(X_occ) != nrow(y)) {
       stop("Occupancy predictors should have one row per site but there are ",
-           nsite, "sites and ", nrow(X_occ), " rows of occupancy predictors",
+           nrow(y), "sites and ", nrow(X_occ), " rows of occupancy predictors",
            call. = FALSE)
     }
   }
@@ -186,7 +186,7 @@ check_dims <- function(y, X_occ, X_detect, Z_occ, Z_detect) {
   if (!is.null(X_detect)) {
     if (nrow(X_detect) != nrow(y)) {
       stop("Detection predictors should have one row per site but there are ",
-           nsite, "sites and ", nrow(X_detect), " rows of detection predictors",
+           nrow(y), "sites and ", nrow(X_detect), " rows of detection predictors",
            call. = FALSE)
     }
   } 

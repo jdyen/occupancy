@@ -6,6 +6,7 @@
 #' @importFrom stats as.formula coef delete.response model.matrix plogis predict quantile rbinom runif sd
 #' @importFrom utils stack
 #' @importFrom scales alpha
+#' @importFrom raster nlayers stack calc setValues
 #'
 #' @description This is a list of functions (mostly from base R) that are
 #'   currently implemented for fitted occupancy models.
@@ -44,18 +45,18 @@
 #'  
 #' }
 #' 
-#' @param object
-#' @param newdata
-#' @param type
-#' @param \dots
-#' @param x
-#' @param names_occ
-#' @param names_detect
-#' @param intercept
-#' @param npred
-#' @param var_name
-#' @param label
-#' @param scale
+#' @param object to add
+#' @param newdata to add
+#' @param type to add
+#' @param \dots to add
+#' @param x to add
+#' @param names_occ to add
+#' @param names_detect to add
+#' @param intercept to add
+#' @param npred to add
+#' @param var_name to add
+#' @param label to add
+#' @param scale to add
 #'
 #' @details \code{predict} generates predictions of occupancy probabilities, detection
 #'     probabilities, and likely detections (sampled as binary detection/nondetection)
@@ -158,20 +159,20 @@ spatial_predict <- function(object, newdata = NULL, type = "response", ...) {
   betas <- coef(object)$occupancy[, "Mean"]
   
   # are there enough layers in the raster data?
-  if (nlayers(newdata) != (length(betas) - 1))
+  if (raster::nlayers(newdata) != (length(betas) - 1))
     stop("spatial_predict requires one layer per predictor variable")
   
   # add an intercept to the raster stack
-  newdata <- stack(setValues(newdata[[1]], values = 1), newdata)
+  newdata <- raster::stack(raster::setValues(newdata[[1]], values = 1), newdata)
   
   # calculate effect of each variable and sum over all variables
-  out <- setValues(newdata[[1]], values = 0)
+  out <- raster::setValues(newdata[[1]], values = 0)
   for (i in seq_along(betas))
     out <- out + betas[i] * newdata[[i]]
   
   # convert back to response (probability) scale if needed
   if (type == "response")
-    out <- calc(out, plogis)
+    out <- raster::calc(out, plogis)
   
   # return outputs
   out
@@ -407,6 +408,6 @@ plot_pr_detect <- function(object, npred = 1000, var_name = NULL, label = NULL, 
        ylim= c(0, 1))
   x_pts <- scale[1] + scale[2] * object$data$X_detect[, var_idx, 1]
   points(c(object$data$y) ~ rep(x_pts, 2), pch = 16,
-         col = ggplot2::alpha("black", 0.5))
+         col = scales::alpha("black", 0.5))
   
 }
