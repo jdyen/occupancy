@@ -108,7 +108,11 @@ test_that("models can predict to fitted and new data", {
   
   # predictions to new data
   idx <- sample(seq_len(100), size = 200, replace = TRUE)
-  expect_ok(predict(mod_tmp, newdata = occupancy_data[idx, ]))
+  data_tmp <- list(X_occ = mod_tmp$data$X_occ[idx, ],
+                   X_detect = mod_tmp$data$X_detect[idx, , ],
+                   Z_occ = mod_tmp$data$Z_occ[idx, ],
+                   Z_detect = mod_tmp$data$Z_detect[idx, , ])
+  expect_ok(predict(mod_tmp, newdata = data_tmp))
   
   # errors if variable missing
   idx <- sample(seq_len(100), size = 200, replace = TRUE)
