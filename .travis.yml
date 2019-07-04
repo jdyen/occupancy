@@ -4,15 +4,16 @@ warnings_are_errors: false
 dist: trusty
 
 r_binary_packages:
-  - jagsUI
-  - coda
+  - rjags
 
 r_packages:
-  - raster
-  - testthat
+  - coda
   - covr
+  - jagsUI
   - knitr
   - pROC
+  - raster
+  - testthat
 
 cache:
   packages: true
