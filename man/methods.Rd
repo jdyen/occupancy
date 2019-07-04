@@ -2,7 +2,41 @@
 % Please edit documentation in R/methods.R
 \name{methods}
 \alias{methods}
+\alias{predict.occupancy_model}
+\alias{spatial_predict}
+\alias{summary.occupancy_model}
+\alias{coef.occupancy_model}
+\alias{calculate_metrics}
+\alias{r2_calc}
+\alias{plot.occupancy_model}
+\alias{plot_pr_occ}
+\alias{plot_pr_detect}
 \title{methods for occupancy_models}
+\usage{
+\method{predict}{occupancy_model}(object, newdata = NULL,
+  type = c("link", "response"), ...)
+
+spatial_predict(object, newdata = NULL, type = "response", ...)
+
+\method{summary}{occupancy_model}(object, ...)
+
+\method{coef}{occupancy_model}(object, ...)
+
+calculate_metrics(object, ...)
+
+r2_calc(object, ...)
+
+\method{plot}{occupancy_model}(x, type = "barplot", names_occ = NULL,
+  names_detect = NULL, intercept = FALSE, ...)
+
+plot_pr_occ(object, npred = 1000, var_name = NULL, label = NULL, ...)
+
+plot_pr_detect(object, npred = 1000, var_name = NULL, label = NULL,
+  scale = NULL, ...)
+}
+\arguments{
+\item{scale}{}
+}
 \description{
 This is a list of functions (mostly from base R) that are
   currently implemented for fitted occupancy models.
