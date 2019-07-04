@@ -1,6 +1,6 @@
-#' @name functions
+#' @name methods
 #'
-#' @title functions for greta arrays
+#' @title methods for occupancy_models
 #'
 #' @description This is a list of functions (mostly from base R) that are
 #'   currently implemented for fitted occupancy models.
@@ -28,10 +28,13 @@
 #'  # calculate a suite of validation metrics (r2, AUC, DIC)
 #'  calculate_metrics(object, ...)
 #'  
+#'  # plot the model coefficients
 #'  plot(x, type, names_occ, names_detect, intercept, ...)
 #'  
+#'  # predictive plots of probabilities of occupancy
 #'  plot_pr_occ(object, npred, var_name, label, ...)
 #'  
+#'  # predictive plots of probabilities of detection
 #'  plot_pr_detect(object, npred, var_name, label, scale, ...)
 #'  
 #' }
@@ -43,7 +46,33 @@
 #'
 #' @examples
 #' \dontrun{
-#'  NULL
+#' 
+#' # fit a model to simulated data
+#' mod <- occupancy(response ~ occ_predictor1 + occ_predictor2 + 
+#'                     (1 | occ_random1) + (1 | occ_random2),
+#'                   ~ detect_predictor1 + detect_predictor2 + 
+#'                    (1 | detect_random1),
+#'                site_id = "site",
+#'                survey_id = "survey",
+#'                data = occupancy_data,
+#'                jags_settings = list(n_iter = 1000, n_burnin = 500, n_thin = 2))
+#'                
+#' # plot the model coefficients
+#' par(mfrow = c(2, 1))
+#' plot(mod)
+#' 
+#' # extract the model coefficients
+#' coef(mod)
+#' 
+#' # check model fit
+#' calculate_metrics(mod)
+#' 
+#' # spatial predictions
+#' 
+#' # plot_pr_occ example
+#' 
+#' # plot_pr_detect
+#' 
 #' }
 NULL
 

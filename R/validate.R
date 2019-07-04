@@ -25,8 +25,19 @@
 #' @examples
 #' \dontrun{
 #'
-#' NULL
-#' 
+#' # fit a model to simulated data
+#' mod <- occupancy(response ~ occ_predictor1 + occ_predictor2 + 
+#'                     (1 | occ_random1) + (1 | occ_random2),
+#'                   ~ detect_predictor1 + detect_predictor2 + 
+#'                    (1 | detect_random1),
+#'                site_id = "site",
+#'                survey_id = "survey",
+#'                data = occupancy_data,
+#'                jags_settings = list(n_iter = 1000, n_burnin = 500, n_thin = 2))
+#'                
+#' # cross validate the fitted model
+#' validate(mod)
+#'      
 #' }
 NULL
 
@@ -151,7 +162,7 @@ cv_inner <- function(i, settings, data_list, newdata_list) {
   mod <- jags(data = data_list[[i]],
               inits = inits,
               parameters.to.save = settings$params,
-              model.file = settings$file_path,
+              model.file = textConnection(settings$model_file),
               n.chains = settings$n_chains,
               n.iter = settings$n_iter,
               n.burnin = settings$n_burnin,
