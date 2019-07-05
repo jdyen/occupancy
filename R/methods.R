@@ -199,6 +199,10 @@ summary.occupancy_model <- function(object, ...) {
 #' @export
 fitted.occupancy_model <- function(object, type = c("link", "response"), ...) {
   
+  # check if link or response or neither (default to link)
+  if (length(type) == 2)
+    type <- "link"
+  
   if (type == "response") {
     mod_sum <- summary(object)
     fitted <- matrix(mod_sum$statistics[grep("p_obs", rownames(mod_sum$statistics)), "Mean"], ncol = 2)
