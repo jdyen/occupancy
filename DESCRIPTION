@@ -1,6 +1,6 @@
 Package: occupancy
 Type: Package
-Title: Occupancy Detection Models in R
+Title: Bayesian Occupancy Detection Models in R
 Version: 0.0.1
 Date: 2019-07-04
 Authors@R: c(
@@ -10,7 +10,7 @@ Authors@R: c(
   person("Geoff", "Heard", role = "ctb"),
   person("Matthew", "Clancy", role = "ctb")
   )
-Description: Fit occupancy-detection models in JAGS with a formula interface.
+Description: Specify and fit Bayesian occupancy-detection models with a formula interface in R.
 License: Apache License 2.0
 URL: https://github.com/jdyen/occupancy
 BugReports: https://github.com/jdyen/occupancy/issues
@@ -39,5 +39,4 @@ Suggests:
     coda,
     testthat,
     knitr
-VignetteBuilder: knitr
 RoxygenNote: 6.1.0
